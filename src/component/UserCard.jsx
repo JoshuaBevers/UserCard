@@ -3,7 +3,8 @@ import React, { Component } from "react";
 class UserCard extends Component {
   state = {
     gender: null,
-    name: null,
+    firstName: null,
+    lastName: null,
     location: null,
     email: null,
     login: null,
@@ -29,30 +30,31 @@ class UserCard extends Component {
     }
   };
 
-  deconstruct = async object => {
-    console.log("the receieved object is; ", object);
-    let personArray = [];
-    const person = object.map(object => {
-      const {
-        gender,
-        name,
-        location,
-        email,
-        login,
-        dob,
-        registered,
-        phone,
-        cell,
-        id,
-        picture,
-        nat
-      } = object;
-    });
+  //   deconstruct = async object => {
+  //     console.log("the receieved object is; ", object);
+  //     let personArray = [];
+  //     const person = object.map(object => {
+  //       const {
+  //         gender,
+  //         firstName,
+  //         lastName,
+  //         location,
+  //         email,
+  //         login,
+  //         dob,
+  //         registered,
+  //         phone,
+  //         cell,
+  //         id,
+  //         picture,
+  //         nat
+  //       } = object;
+  //     });
 
-    console.log("person is: ", person);
+  //     console.log("person is: ", person);
 
-    return person;
-  };
+  //     return person;
+  //   };
 
   async componentDidMount() {
     console.log("the quote component was mounted in JS.");
@@ -75,7 +77,7 @@ class UserCard extends Component {
         picture,
         nat
       } = data.results[0];
-      //   this.setState({ quote: data });
+      this.setState({ gender: gender, firstName: name.first });
     } catch (e) {
       console.log(e.message);
       this.setState({ quote: e.message });
@@ -83,7 +85,7 @@ class UserCard extends Component {
     }
   }
   render() {
-    return <h1>This returned</h1>;
+    return <h1>Welcome: {this.state.firstName}</h1>;
   }
 }
 export default UserCard;
