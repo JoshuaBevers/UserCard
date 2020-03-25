@@ -16,6 +16,19 @@ class UserCard extends Component {
     nat: null
   };
 
+  getData = async () => {
+    try {
+      const response = await fetch(`https://randomuser.me/api/`);
+      const data = await response.json();
+
+      return data;
+    } catch (e) {
+      console.log(e.message);
+      this.setState({ quote: e.message });
+      return e;
+    }
+  };
+
   deconstruct = async object => {
     console.log("the receieved object is; ", object);
     let personArray = [];
@@ -44,8 +57,7 @@ class UserCard extends Component {
   async componentDidMount() {
     console.log("the quote component was mounted in JS.");
     try {
-      const response = await fetch(`https://randomuser.me/api/`);
-      const data = await response.json();
+      const data = await this.getData();
       console.log("Data results are: ", data.results[0]);
       //   const people = data.results;  this will be used for when we handle multiple users.
       //   const personReturned = await this.deconstruct(people);
