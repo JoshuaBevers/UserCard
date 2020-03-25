@@ -77,7 +77,16 @@ class UserCard extends Component {
         picture,
         nat
       } = data.results[0];
-      this.setState({ gender: gender, firstName: name.first });
+      this.setState({
+        gender: gender,
+        firstName: name.first,
+        lastName: name.last,
+        email: email,
+        phone: phone,
+        cell: cell,
+        nat: nat,
+        picture: picture.small
+      });
     } catch (e) {
       console.log(e.message);
       this.setState({ quote: e.message });
@@ -85,7 +94,18 @@ class UserCard extends Component {
     }
   }
   render() {
-    return <h1>Welcome: {this.state.firstName}</h1>;
+    return (
+      <div>
+        <img src={this.state.picture} alt=""></img>
+        <h1>
+          Welcome: {this.state.firstName} {this.state.lastName} <br></br>
+        </h1>
+        <h2>your contact information is:</h2>
+        <h4>phone: {this.state.phone}</h4>
+        <h4>cell: {this.state.cell}</h4>
+        <h4>cell: {this.state.email}</h4>
+      </div>
+    );
   }
 }
 export default UserCard;
