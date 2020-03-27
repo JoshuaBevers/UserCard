@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
 import UserProfileList from "./component/userProfileList";
-import { Container, Box } from "bloomer";
 
 export default class App extends Component {
   state = {

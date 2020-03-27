@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 
 const UserProfile = props => {
-  const { user } = props;
-  return <div>HELLO!</div>;
+  const { userProfile } = props;
+  return <div>HELLO!{console.log(userProfile)}</div>;
 };
 
 export default UserProfile;
