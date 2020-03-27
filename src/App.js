@@ -5,8 +5,7 @@ import { Container, Box } from "bloomer";
 
 export default class App extends Component {
   state = {
-    users: [], //still annoys me that I can't type things.
-    key: 0
+    users: [] //still annoys me that I can't type things.
   };
 
   getUsers = async url => {
